@@ -1,0 +1,112 @@
+// stiil works
+var bio = {
+	"name" : "Audrey Lin",
+	"role" : "Data Scientist",
+	"contacts": {
+		"mobile": "222-666-8888",
+		"email": "ffhhudacity@gmail.com",
+		"github": "ffhhudacity",
+		"twitter": "ffhhudacity",
+		"location": "San Francisco Bay Area, CA, USA",
+	},
+	"welcomeMessage": "Welcome to my first online resume",
+	"skills": [
+	"Creative", 
+	"Integrity", 
+	"Efficiency",
+	"Eager to learn",
+	"Javascript"
+	],
+	"bioPic": "images/desert.jpg",
+
+	"displayBio": function(){
+		var formattedName = HTMLheaderName.replace("%data%", bio.name);
+		var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
+		var formattedbioPic = HTMLbioPic.replace("%data%", bio.bioPic);
+        var formattedMessage = HTMLWelcomeMsg.replace("%data%", bio.welcomeMessage);
+
+      	$("#header").prepend(formattedName + formattedRole);
+      	$("#header").append(formattedbioPic + formattedMessage);
+ 
+
+      	var contacts = bio["contacts"];
+      	var formattedMobile = HTMLmobile.replace("%data%", contacts["mobile"]);
+      	var formattedEmail = HTMLemail.replace("%data%", contacts["email"]);
+      	var formattedgithub = HTMLgithub.replace("%data%", contacts["github"]);
+      	var formattedLocation = HTMLlocation.replace("%data%", contacts["location"]);
+      	var contactinfo = formattedMobile + formattedEmail + formattedgithub + formattedLocation;
+
+      	$(contactinfo).appendTo("#topContacts, #footerContacts");
+     	
+     	$("#header").append(HTMLskillsStart);
+      	for(skill in bio.skills){
+      		var formattedSkills = HTMLskills.replace("%data%", bio.skills[skill]);
+      		$("#skills").append(formattedSkills)
+      	}
+    }
+};
+
+bio.displayBio();
+
+var work = {
+	"jobs": [
+		{
+			"employer": "AT&T",
+			"title": "Data Scientist",
+			"location": "San Francisco Bay Area",
+			"dates": "2011 - current",
+			"description": "manage all the big data"
+		},
+		{
+			"employer": "Google",
+			"title": "Software Engineer",
+			"location": "Mountain View",
+			"dates": "2009-2011",
+			"description": "develop novel search tools"	
+		}
+	],
+
+
+};
+
+function displayWork() {
+	for (job in work.jobs) {
+		$("#workExperience").append(HTMLworkStart);
+
+		var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+		var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
+		var formattedEmployerTitle = formattedEmployer + formattedTitle;
+
+		$(".work-entry:last").append(formattedEmployerTitle);
+
+		var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
+		$(".work-entry:last").append(formattedDates);
+
+		var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
+		$(".work-entry:last").append(formattedDescription);
+	}
+}
+displayWork();
+
+var education = {
+	"name": "Stanford University",
+	"location": "Stanford, CA, USA",
+	"degree": "Ph.D.",
+	"majors": "Bioengineering",
+	"dates": "1999-2003",
+	"url": "xxxx",
+	"OnlineCourses": {
+		"title": "Negotiation",
+		"school": "Stanford University",
+		"date": "2005",
+		"url": "string"
+	},
+}
+
+
+if (projects.projects[project].images.length > 0) {
+				for (image in projects.projects[project].images) {
+					var formattedImage = HTMLprojectImage.replace("%data%,", projects.projects[project].images);
+					$(".project-entry:last").append(formattedImage);
+				}
+			}
